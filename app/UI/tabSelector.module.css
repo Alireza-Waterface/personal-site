@@ -1,0 +1,15 @@
+.tabSelector {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	border-radius: 7px;
+	padding: 0.5rem;
+	margin: 2rem 0;
+	background-color: var(--color-tertiary);
+}
+
+@media screen and (max-width: 700px) {
+	.tabSelector {
+		grid-template-columns: 1fr;
+	}
+}

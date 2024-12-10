@@ -1,0 +1,84 @@
+.contact {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	column-gap: 2rem;
+	padding: 2rem 0;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	align-items: start;
+}
+@media screen and (max-width: 992px) {
+	.contact {
+		grid-template-columns: 1fr;
+	}
+}
+
+.title {
+	grid-column: 1 / -1;
+	text-align: center;
+	font-size: 2rem;
+}
+
+.intro {
+	color: var(--color-primary);
+	font-size: 0.875rem;
+	text-align: center;
+	grid-column: 1 / -1;
+}
+
+.details {
+	box-shadow: var(--shadow-1);
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border-radius: 7px;
+	margin: 2rem 0;
+}
+@media screen and (max-width: 576px) {
+	.details {
+		padding: 1rem;
+	}
+}
+.details > .image {
+	width: 100%;
+	border-radius: 20px;
+}
+.details > .title2 {
+	font-size: 1.75rem;
+	font-weight: 600;
+}
+.details > .title3 {
+	font-size: 2.25rem;
+	font-weight: 600;
+}
+.details > .job {
+	color: var(--color-primary);
+	font-size: 1.25rem;
+}
+@media screen and (max-width: 768px) {
+	.details > .title2 {
+		font-size: 1.5rem;
+	}
+}
+.details span {
+	transition: all 0.3s;
+	position: relative;
+}
+.details span::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background-color: var(--color-primary);
+	border-radius: 4px;
+	transition: all 0.3s;
+}
+.details span:hover::after {
+	width: 100%;
+}
+.details span:hover {
+	color: var(--color-primary);
+}

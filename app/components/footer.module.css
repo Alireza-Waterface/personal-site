@@ -1,0 +1,159 @@
+.footer {
+	display: grid;
+	grid-template-columns: 1fr 0.8fr 1fr;
+	padding: 2rem 3% 0 3% !important;
+}
+@media screen and (max-width: 768px) {
+	.footer {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2rem;
+	}
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	list-style-type: disc !important;
+}
+.list::marker {
+	color: var(--color-primary);
+}
+@media screen and (max-width: 768px) {
+	.list[desc="sites"] {
+		order: 1;
+	}
+	.list[desc="contact"] {
+		order: 2;
+	}
+}
+
+.list legend {
+	font-size: 1.25rem;
+	color: var(--color-primary);
+}
+
+.listItem {
+	width: fit-content;
+	margin-right: 2rem;
+	transition: all 0.2s;
+	position: relative;
+}
+.listItem:hover {
+	color: var(--color-primary);
+}
+.listItem::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 2px;
+	background-color: var(--color-primary);
+	width: 0;
+	transition: all 0.2s;
+	border-radius: 4px;
+}
+.listItem:hover::after {
+	width: 100%;
+}
+
+.reactIcon {
+	grid-column: 2 / 3;
+	display: grid;
+	place-items: center;
+}
+@media screen and (max-width: 768px) {
+	.reactIcon {
+		grid-column: unset;
+		align-self: center;
+		order: 3;
+	}
+}
+
+@keyframes rotate {
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+.reactIcon > .icon {
+	color: var(--color-primary);
+	transition: all 0.3s;
+	animation: rotate 8s linear infinite;
+}
+.reactIcon > .icon:hover {
+	filter: drop-shadow(0 0 1.5em var(--color-primary));
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.link > .icon {
+	padding: 0.25rem;
+	border-radius: 4px;
+}
+.link > .icon:hover {
+	background-color: var(--color-primary);
+}
+
+.link > span {
+	position: relative;
+}
+.link > span::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 2px;
+	background-color: var(--color-primary);
+	border-radius: 4px;
+	transition: all 0.3s;
+}
+.link > span:hover::after {
+	width: 100%;
+}
+.link > span:hover {
+	color: var(--color-primary);
+}
+
+.address {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.address > * {
+	margin-right: 1rem;
+}
+
+.social {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.social > * {
+	flex: 1 1;
+}
+
+.rights {
+	grid-column: 1 / -1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	margin-top: 2rem;
+	padding: 1rem 0;
+	border-top: 1px solid #000;
+	order: 4;
+}
+@media screen and (max-width: 768px) {
+	.rights {
+		grid-column: unset;
+		margin-top: unset;
+		width: 100%;
+	}
+}
