@@ -2,6 +2,8 @@ import { getProjects } from '@/lib/apiProjects';
 import classes from './projects.module.css';
 import Sample from '../UI/Sample';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata() {
 	const projects = await getProjects();
 

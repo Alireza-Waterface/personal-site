@@ -5,6 +5,8 @@ import classes from './project.module.css';
 import Heading from "@/app/UI/Heading";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }) {
 	const { id } = await params;
 	const [projectData] = await getProject(id);
