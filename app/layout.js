@@ -17,7 +17,7 @@ export const metadata = {
       type: 'website',
       images: [ // configure for different image sizes
          {
-            url: 'https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.png?t=2024-11-23T08%3A31%3A54.295Z',
+            url: 'https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.webp',
             width: 640,
             height: 640,
             alt: 'علیرضا آبچهره',
@@ -29,6 +29,7 @@ export const metadata = {
 export const viewport = {
    width: 'device-width',
    initialScale: 1,
+   minimumScale: 1,
    maximumScale: 5,
    userScalable: false,
 };

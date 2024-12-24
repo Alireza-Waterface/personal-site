@@ -9,7 +9,7 @@ export default function Header() {
 	return (
 		<header id="header" className={classes.header}>
 			<div className={classes.introduce}>
-				<p className={classes.welcome}>سلام، به وب سایت من خوش آمدید</p>
+				<p className={classes.welcome}>سلام، به وب‌سایت من خوش آمدید</p>
 
 				<Heading type='h1' size={3} className={classes.title}>
 					من <span>علیرضا آبچهره</span> هستم. توسعه‌دهنده فرانت‌اند
@@ -33,30 +33,30 @@ export default function Header() {
 								target="_blank"
 								title="لینکدین"
 								href='https://www.linkedin.com/in/waterface/'
-							><button name="لینکدین" className={classes.buttonIcon}><FaLinkedin style={{fill: '#0077B5'}} /></button></a>
+							><button name="لینکدین" title="لینکدین" className={classes.buttonIcon}><FaLinkedin style={{fill: '#0077B5'}} /></button></a>
 							<a
 								className="link"
 								rel='norefferer'
 								target="_blank"
 								title="گیت‌هاب"
 								href='https://github.com/Alireza-Waterface'
-							><button name="گیت‌هاب" className={classes.buttonIcon}><FaGithub style={{ fill: "#DDE2E6" }} /></button></a>
+							><button name="گیت‌هاب" title="گیت‌هاب" className={classes.buttonIcon}><FaGithub style={{ fill: "#DDE2E6" }} /></button></a>
 							<a
 								className="link"
 								rel='norefferer'
 								target="_blank"
 								title="تلگرام"
 								href='https://t.me/+989155706085'
-							><button name="تلگرام" className={classes.buttonIcon}><FaTelegram style={{backgroundColor: '#24A1DE', borderRadius: '50%', fill: 'var(--color-darker)'}} /></button></a>
+							><button name="تلگرام" title="تلگرام" className={classes.buttonIcon}><FaTelegram style={{backgroundColor: '#24A1DE', borderRadius: '50%', fill: 'var(--color-darker)'}} /></button></a>
 						</div>
 					</div>
 
 					<div className={classes.skills}>
 						<p>برخی مهارت‌های من</p>
 						<div className={classes.buttons}>
-							<button className={classes.buttonIcon} title="ری‌اکت"><FaReact style={{fill: '#61DBFB'}} /></button>
-							<button className={classes.buttonIcon} title="جاوا اسکریپت"><IoLogoJavascript style={{fill: '#F7DF1E'}} /></button>
-							<button className={classes.buttonIcon} title="گیت"><FaGitAlt style={{fill: '#F1502F'}} /></button>
+							<button className={classes.buttonIcon} title="ری‌اکت" name="ری‌اکت"><FaReact style={{fill: '#61DBFB'}} /></button>
+							<button className={classes.buttonIcon} title="جاوا اسکریپت" name="جاوا اسکریپت"><IoLogoJavascript style={{fill: '#F7DF1E'}} /></button>
+							<button className={classes.buttonIcon} title="گیت" name="گیت"><FaGitAlt style={{fill: '#F1502F'}} /></button>
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@ export default function Header() {
 
 			<div className={classes.imageContainer}>
 				<img
-					src="https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.png?t=2024-09-29T09%3A20%3A04.801Z"
+					src="https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.webp"
 					alt="تصویر علیرضا آبچهره"
 					loading="lazy"
 				/>

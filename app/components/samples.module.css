@@ -3,14 +3,14 @@
 	padding: 2rem 0;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
 	align-items: stretch;
 	column-gap: 3rem;
 	row-gap: 1rem;
 }
 @media screen and (max-width: 1200px) {
 	.samples {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 @media screen and (max-width: 768px) {

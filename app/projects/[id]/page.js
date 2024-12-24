@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
 			type: 'website',
 			images: [ // configure for different image sizes
 				{
-					url: `https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${projectData.id}-1.png`,
+					url: `https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${projectData.id}-1.webp`,
 					width: 640,
 					height: 640,
 					alt: `پروژه ${projectData?.title}`,
@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }) {
 			<div className={classes.container}>
 				<div className={classes.gallery}>
 					<img
-						src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${projectData.id}-1.png`}
+						src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${projectData.id}-1.webp`}
 						alt={projectData.title}
 						loading="lazy"
 						fetchPriority="low"

@@ -14,7 +14,7 @@ export default async function Samples() {
 	return (
 		<section id="samples" className={classes.samples}>
 			<p className={classes.intro}>برخی از نمونه‌کار های انجام شده</p>
-			<Heading type="h2" size={2} className={classes.title}>نمونه‌کار های من</Heading>
+			<Heading type="h2" size={2} className={classes.title}>نمونه‌کار ها</Heading>
 			
 			{
 				data.slice(0, 3).map(project => (

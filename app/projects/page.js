@@ -22,7 +22,7 @@ export async function generateMetadata() {
 			type: 'website',
 			images: [ // configure for different image sizes
 				{
-					url: 'https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.png?t=2024-11-23T08%3A31%3A54.295Z',
+					url: 'https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.webp',
 					width: 640,
 					height: 640,
 					alt: 'علیرضا آبچهره',

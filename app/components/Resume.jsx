@@ -29,7 +29,7 @@ export default async function Resume() {
 	return (
 		<section id="resume" className={classes.resume}>
 			<p className={classes.desc}>بیش از یک سال تجربه</p>
-			<h2 className={classes.title}>رزومه من</h2>
+			<h2 className={classes.title}>رزومه</h2>
 
 			<TabSelector>
 				<div className={`${classes.tabOption} ${classes.tab} tab`} data-style="active" data-tab='skills'>مهارت‌های تخصصی</div>

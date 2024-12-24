@@ -8,7 +8,7 @@ export default function Sample({ data }) {
 			<Link className={classes.sample} href={`/projects/${data.id}`}>
 				<div className={classes.sampleBG}>
 					<img
-						src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${data.id}-1.png`}
+						src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${data.id}-1.webp`}
 						alt={data.title || 'تصویر پروژه'}
 						loading='lazy'
 						fetchPriority='low'
@@ -24,7 +24,7 @@ export default function Sample({ data }) {
 					</div> */}
 				</div>
 
-				<p>{ data.description.slice(0, 100) } ......</p>
+				<p>{ data.description.length > 100 ? data.description.slice(0, 100) + ' ...' : data.description.slice(0, 100) }</p>
 			</Link>
 		</div>
 	);
