@@ -66,7 +66,6 @@ export default function Header() {
 				<img
 					src="https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.webp"
 					alt="تصویر علیرضا آبچهره"
-					loading="lazy"
 				/>
 			</div>
 		</header>
