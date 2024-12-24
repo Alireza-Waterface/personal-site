@@ -106,7 +106,7 @@ export default function Contact() {
 
 			<div className={classes.details}>
 				<img
-					src="https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/images/co-work.jpg?t=2024-10-10T09%3A50%3A26.261Z"
+					src="https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/images/co-work.webp"
 					className={classes.image}
 					alt='تماس با من'
 					loading='lazy'
