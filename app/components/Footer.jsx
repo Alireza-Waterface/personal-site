@@ -57,8 +57,8 @@ export default function Footer() {
 				<SiReact className={classes.icon} size={120} />
 			</div>
 
-			<ul className={classes.list}>
-				<legend>راه‌های ارتباطی</legend>
+			<div className={classes.list}>
+				<h3>راه‌های ارتباطی</h3>
 
 				<address className={classes.address}>
 					<a
@@ -130,7 +130,7 @@ export default function Footer() {
 						</a>
 					</div>
 				</address>
-			</ul>
+			</div>
 			<div className={classes.rights}>
 				تمامی حقوق سایت محفوظ است
 				<FaRegCopyright />

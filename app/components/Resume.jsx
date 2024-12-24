@@ -70,7 +70,7 @@ export default async function Resume() {
 					))
 				}
 
-				<div className={classes.list}>
+				<ul className={classes.list}>
 					<legend>دیگر مهارت‌ها و ابزارها</legend>
 
 					<li>
@@ -101,7 +101,7 @@ export default async function Resume() {
 						و دیگر ابزار های پرکاربرد دیگر
 						<FaToolbox size={35} className={classes.icon} />
 					</li>
-				</div>
+				</ul>
 			</div>
 		</section>
 	);

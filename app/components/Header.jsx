@@ -9,7 +9,7 @@ export default function Header() {
 	return (
 		<header id="header" className={classes.header}>
 			<div className={classes.introduce}>
-				<p className={classes.welcome}></p>
+				<p className={classes.welcome}>سلام، به وب سایت من خوش آمدید</p>
 
 				<Heading type='h1' size={3} className={classes.title}>
 					من <span>علیرضا آبچهره</span> هستم. توسعه‌دهنده فرانت‌اند
@@ -33,21 +33,21 @@ export default function Header() {
 								target="_blank"
 								title="لینکدین"
 								href='https://www.linkedin.com/in/waterface/'
-							><button className={classes.buttonIcon}><FaLinkedin style={{fill: '#0077B5'}} /></button></a>
+							><button name="لینکدین" className={classes.buttonIcon}><FaLinkedin style={{fill: '#0077B5'}} /></button></a>
 							<a
 								className="link"
 								rel='norefferer'
 								target="_blank"
 								title="گیت‌هاب"
 								href='https://github.com/Alireza-Waterface'
-							><button className={classes.buttonIcon}><FaGithub style={{ fill: "#DDE2E6" }} /></button></a>
+							><button name="گیت‌هاب" className={classes.buttonIcon}><FaGithub style={{ fill: "#DDE2E6" }} /></button></a>
 							<a
 								className="link"
 								rel='norefferer'
 								target="_blank"
 								title="تلگرام"
 								href='https://t.me/+989155706085'
-							><button className={classes.buttonIcon}><FaTelegram style={{backgroundColor: '#24A1DE', borderRadius: '50%', fill: 'var(--color-darker)'}} /></button></a>
+							><button name="تلگرام" className={classes.buttonIcon}><FaTelegram style={{backgroundColor: '#24A1DE', borderRadius: '50%', fill: 'var(--color-darker)'}} /></button></a>
 						</div>
 					</div>
 

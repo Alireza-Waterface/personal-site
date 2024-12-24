@@ -30,7 +30,7 @@
 	}
 }
 
-.list legend {
+.list legend, .list h3 {
 	font-size: 1.25rem;
 	color: var(--color-primary);
 }
