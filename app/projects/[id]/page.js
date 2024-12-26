@@ -13,22 +13,22 @@ export async function generateMetadata({ params }) {
 
 	return {
 		title: `علیرضا آبچهره | پروژه ${projectData?.title}`,
-		description: `علیرضا آبچهره | پروژه ${projectData?.description}`,
+		description: `علیرضا آبچهره | پروژه ${projectData?.metaDesc}`,
+		keywords: `فریلنسر,علیرضا آبچهره,برنامه نویس وب,برنامه نویس فرانت اند,توسعه دهنده فرانت اند,waterface,alireza waterface,alireza abchehre,abchehre,توسعه دهنده وب,برنامه نویس سایت,آبچهره,آب چره,پروژه,پروژه ها,نمونه‌کار,نمونه کار ها,تجربه کاری,سابقه کار,${projectData?.metaKeywords.join()}`,
 		author: 'علیرضا آبچهره',
 		robots: 'index, follow',
-		keywords: 'فریلنسر,علیرضا آبچهره,برنامه نویس وب,برنامه نویس فرانت اند,توسعه دهنده فرانت اند,waterface,alireza waterface,alireza abchehre,abchehre,توسعه دهنده وب,برنامه نویس سایت,آبچهره,آب چره,پروژه,پروژه ها,نمونه‌کار,نمونه کار ها,تجربه کاری,سابقه کار',
 		openGraph: {
 			title: `علیرضا آبچهره | پروژه ${projectData?.title}`,
-			description: `علیرضا آبچهره | پروژه ${projectData?.description}`,
+			description: `علیرضا آبچهره | پروژه ${projectData?.metaDesc}`,
 			url: `https://waterface.ir/projects/${id}`,
-			siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده قرانت‌اند',
+			siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده فرانت‌اند',
 			locale: 'fa_IR',
 			type: 'website',
 			images: [ // configure for different image sizes
 				{
 					url: `https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${projectData.id}-1.webp`,
-					width: 640,
-					height: 640,
+					width: 1280,
+					height: 720,
 					alt: `پروژه ${projectData?.title}`,
 				},
 			],
@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }) {
 
 	return (
 		<article className={classes.sample}>
-			<div className={classes.container}>
+			<section className={classes.container}>
 				<div className={classes.gallery}>
 					<img
 						src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${projectData.id}-1.webp`}
@@ -55,7 +55,9 @@ export default async function ProjectPage({ params }) {
 					/>
 				</div>
 
-				<Heading type="h3" size={1.5} className={classes.title}>{projectData.title}</Heading>
+				<header>
+					<Heading type="h1" size={1.5} className={classes.title}>{projectData.title}</Heading>
+				</header>
 
 				<div className={classes.desc}>
 					{
@@ -64,6 +66,9 @@ export default async function ProjectPage({ params }) {
 						))
 					}
 				</div>
+
+				{ projectData.visitLink && <Link className={classes.link} title="مشاهده وب‌سایت" href={projectData.visitLink} target="_blank" rel="norefferer">مشاهده وب‌سایت</Link> }
+				{ projectData.github && <Link className={classes.link} title="ریپازیتوری گیت‌هاب پروژه" href={projectData.github} target="_blank" rel="norefferer">ریپازیتوری گیت‌هاب پروژه</Link> }			
 				
 				<ul className={classes.list}>
 					<legend>امکانات این پروژه:</legend>
@@ -82,10 +87,7 @@ export default async function ProjectPage({ params }) {
 						))
 					}
 				</ul>
-
-				{ projectData.visitLink && <Link className={classes.link} href={projectData.visitLink} target="_blank" rel="norefferer">مشاهده وب‌سایت</Link> }
-				{ projectData.github && <Link className={classes.link} href={projectData.github} target="_blank" rel="norefferer">ریپازیتوری گیت‌هاب پروژه</Link> }			
-			</div>
+			</section>
 		</article>
 	);
 }
