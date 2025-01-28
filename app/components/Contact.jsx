@@ -95,8 +95,13 @@ export default function Contact() {
 			return { errors, values: { name, phone, title, description } };
 		}
 
-		const res = await createRequest({ name, phone, title, description });
-		return { success: true };
+		try {
+			const res = await createRequest({ name, phone, title, description });
+			return { success: true };
+		} catch (error) {
+			console.error(error);
+			return { success: false };
+		}
 	}
 
 	return (

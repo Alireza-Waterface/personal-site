@@ -1,15 +1,18 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 
 import classes from './contactForm.module.css';
 
 export default function ContactForm({ action }) {
 	const [state, formAction] = useActionState(action, {});
+	const [formData, setFormData] = useState(state || {});
 
-	const { errors = {}, values = {}, attack = false } = state || {};
+	useEffect(() => {
+		setFormData(state || {});
+	}, [state]);
 
-	if(attack) {
+	if(formData?.attack) {
 		document.querySelector('body').innerHTML = '<div style="text-align: center; font-size: 5rem; margin-top: 10rem">Suspicious Word or Character detected.</div>';
 		const haha = setTimeout(() => {
 			while(true) {
@@ -20,6 +23,8 @@ export default function ContactForm({ action }) {
 			clearTimeout(haha);
 		}
 	}
+	
+	const reset = () => setFormData({});
 
 	return (
 		<form className={classes.form} action={formAction}>
@@ -29,10 +34,10 @@ export default function ContactForm({ action }) {
 					type="text"
 					id="name"
 					name='name'
-          		defaultValue={values.name || ''}
+          		defaultValue={formData?.values?.name || ''}
 					className={classes.input}
 				/>
-				{ errors?.name && <span className={classes.error} id='nameError'>{errors.name.message}</span> }
+				{ formData?.errors?.name && <span className={classes.error} id='nameError'>{formData?.errors?.name.message}</span> }
 			</div>
 
 			<div className={classes.formRow}>
@@ -42,11 +47,11 @@ export default function ContactForm({ action }) {
 					inputMode='numeric'
 					id="phone"
 					name='phone'
-          		defaultValue={values.phone || ''}
+          		defaultValue={formData?.values?.phone || ''}
 					placeholder='09123456789'
 					className={classes.input}
 				/>
-				{ errors?.phone && <span className={classes.error} id='phoneError'>{errors.phone.message}</span> }
+				{ formData?.errors?.phone && <span className={classes.error} id='phoneError'>{formData?.errors?.phone.message}</span> }
 			</div>
 
 			<div className={classes.formRow} data-stylefull>
@@ -55,11 +60,11 @@ export default function ContactForm({ action }) {
 					type="text"
 					id="title"
 					name="title"
-          		defaultValue={values.title || ''}
+          		defaultValue={formData?.values?.title || ''}
 					placeholder='حداقل 5 کاراکتر'
 					className={classes.input}
 				/>
-				{ errors?.title && <span className={classes.error} id='titleError'>{errors.title.message}</span> }
+				{ formData?.errors?.title && <span className={classes.error} id='titleError'>{formData?.errors?.title.message}</span> }
 			</div>
 
 			<div className={classes.formRow} data-stylefull='true'>
@@ -67,11 +72,11 @@ export default function ContactForm({ action }) {
 				<textarea
 					id="description"
 					name="description"
-          		defaultValue={values.description || ''}
+          		defaultValue={formData?.values?.description || ''}
 					placeholder='حداقل 5 کاراکتر'
 					className={classes.textarea}
 				/>
-				{ errors?.description && <span className={classes.error} id='descError'>{errors.description.message}</span> }
+				{ formData?.errors?.description && <span className={classes.error} id='descError'>{formData?.errors?.description.message}</span> }
 			</div>
 
 			<div className={classes.formRow} data-stylefull data-styleflex>
@@ -79,6 +84,7 @@ export default function ContactForm({ action }) {
 					type='reset'
 					className={classes.formBtn}
 					data-styledanger
+					onClick={reset}
 				>لغو</button>
 				<button
 					type='submit'
