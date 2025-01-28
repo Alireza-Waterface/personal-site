@@ -63,7 +63,7 @@ export default function Contact() {
 
 		if (name.length === 0) {
 			errors.name = { message: 'نام خود را وارد کنید' };
-		} else if (name.length < 3) {
+		} else if (name.length < 2) {
 			errors.name = { message: 'طول نام وارد شده کمتر از حد مجاز است' };
 		} else if (name.length > 50) {
 			errors.name = { message: 'طول نام وارد شده بیشتر از حد مجاز است' };

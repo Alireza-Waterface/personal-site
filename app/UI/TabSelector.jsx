@@ -8,11 +8,13 @@ export default function TabSelector({children}) {
 	function handleTabChange(e) {
 		e.stopPropagation();
 		const tab = e.target.closest('.tab');
-		const target = tab.dataset.tab;
 		
+		if(!tab) return;
+		
+		const target = tab?.dataset?.tab;	
 
 		removeAttrfromAll('tab', 'active');
-		tab.setAttribute('data-style', 'active');
+		tab?.setAttribute('data-style', 'active');
 
 		removeAttrfromAll('content', 'active');
 		document.querySelectorAll('.content').forEach(content => {
