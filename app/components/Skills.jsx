@@ -1,6 +1,7 @@
-import { FaGitAlt, FaReact } from 'react-icons/fa';
-import Heading from '../UI/Heading';
 import classes from './skills.module.css';
+import Heading from '../UI/Heading';
+
+import { FaGitAlt, FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
 
 export default function Skills() {

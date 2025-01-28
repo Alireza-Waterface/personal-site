@@ -36,7 +36,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang="fa-IR" dir="rtl" className="dark-mode">
+      <html lang="fa-IR" dir="rtl">
          <body>
             <Navbar />
             {children}
