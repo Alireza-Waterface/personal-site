@@ -1,6 +1,7 @@
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
+import ScrollToTop from "./UI/ScrollToTop";
 
 export const metadata = {
    title: "علیرضا آبچهره | توسعه‌دهنده فرانت‌اند",
@@ -12,7 +13,7 @@ export const metadata = {
       title: "علیرضا آبچهره | توسعه‌دهنده فرانت‌اند",
       description: "علیرضا آبچهره | توسعه دهنده فرانت‌اند و فریلنسر | توسعه وب‌سایت با NextJS، ری‌اکت، جاوا اسکریپت و ...",
       url: 'https://waterface.ir',
-      siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده قرانت‌اند',
+      siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده فرانت‌اند',
       locale: 'fa_IR',
       type: 'website',
       images: [ // configure for different image sizes
@@ -41,6 +42,8 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <Footer />
+            
+            <ScrollToTop />
          </body>
       </html>
    );

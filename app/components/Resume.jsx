@@ -103,6 +103,15 @@ export default async function Resume() {
 					</li>
 				</ul>
 			</div>
+
+			<a
+				href='https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me//Resume.pdf'
+				title='دانلود فایل رزومه'
+				download
+				className={classes.dlBtn}
+			>
+				دانلود فایل رزومه
+			</a>
 		</section>
 	);
 }
