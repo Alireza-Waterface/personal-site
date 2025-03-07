@@ -17,7 +17,7 @@ export async function generateMetadata() {
 			title: `علیرضا آبچهره | پروژه‌ها و نمونه‌کار ها - ${projects?.length} پروژه`,
 			description: "علیرضا آبچهره | توسعه دهنده فرانت‌اند و فریلنسر | پروژه‌ها، نمونه‌کار ها و سوابق کاری",
 			url: 'https://waterface.ir/projects',
-			siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده قرانت‌اند',
+			siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده فرانت‌اند',
 			locale: 'fa_IR',
 			type: 'website',
 			images: [ // configure for different image sizes
