@@ -2,4 +2,3 @@ node_modules
 .next
 .env
 database.db
-lib/db.js
