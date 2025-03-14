@@ -30,10 +30,13 @@ export default function Navbar() {
 					<Link href="/#resume">رزومه</Link>
 				</li>
 				<li className='link'>
-					<Link href="/#blog">وبلاگ</Link>
+					<Link href="/blogs">وبلاگ</Link>
 				</li>
 				<li className='link'>
 					<Link href="/#contact">ارتباط با من</Link>
+				</li>
+				<li className='link'>
+					<Link href="/tools">ابزار ها</Link>
 				</li>
 			</ul>
 

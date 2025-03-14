@@ -1,0 +1,95 @@
+.verify {
+	background-color: var(--color-darker);
+	width: clamp(300px, 100%, 600px);
+	padding: 1rem;
+	border-radius: 6px;
+	margin: 2rem auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.title {
+	text-align: center;
+}
+
+.email {
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+.sendCodeState {
+	font-size: 1rem;
+	padding: 0.5rem 1rem;
+	border-radius: 6px;
+	border: 2px solid var(--color-tertiary);
+}
+
+.sendCodeState.success {
+	background-color: oklch(0.648 0.2 131.684);
+}
+
+.sendCodeState.error {
+	background-color: oklch(0.577 0.245 27.325);
+	color: #fff;
+}
+
+.error {
+	color: oklch(0.577 0.245 27.325);
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.formRow {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+}
+.formRow > label {
+	width: fit-content;
+}
+.formRow > label > span {
+	color: var(--color-primary);
+}
+.formRow > span {
+	color: var(--color-primary);
+	font-size: 0.875rem;
+}
+
+.input {
+	border-radius: 7px;
+	border: none;
+	padding: 8px 12px;
+	background-color: var(--color-dark);
+	box-shadow: var(--inner-shadow);
+	transition: all 0.2s;
+	width: 100%;
+}
+
+.formBtn {
+	border-radius: 5px;
+	background-color: var(--color-darker);
+	width: calc(fit-content + 50px);
+	padding: 0.75rem 1rem;
+	transition: all 0.2s;
+	border: 2px solid var(--color-tertiary);
+	box-shadow: var(--shadow-1);
+	outline: 2px solid transparent;
+	outline-offset: -1px;
+}
+
+.formBtn:active {
+	transform: translateY(3px);
+}
+.formBtn:hover {
+	outline: 2px solid var(--color-primary);
+	background-color: var(--color-tertiary);
+}

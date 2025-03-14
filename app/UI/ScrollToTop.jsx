@@ -1,4 +1,4 @@
-"use client"; // Needed for Next.js App Router
+"use client";
 
 import { useEffect, useState } from "react";
 import { GoMoveToTop } from "react-icons/go";

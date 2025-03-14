@@ -1,3 +1,4 @@
+import { getAbout } from "@/lib/apiAbout";
 import Heading from "../UI/Heading";
 
 import classes from './header.module.css';
@@ -5,7 +6,11 @@ import classes from './header.module.css';
 import { FaGitAlt, FaGithub, FaLinkedin, FaReact, FaTelegram } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 
-export default function Header() {
+export default async function Header() {
+	const about = await getAbout();
+
+	console.log(about)
+
 	return (
 		<header id="header" className={classes.header}>
 			<div className={classes.introduce}>
@@ -20,7 +25,7 @@ export default function Header() {
 					<br />
 					متخصص در ری‌اکت، جاوا اسکریپت و ...
 					<br />
-					دانشجوی کارشناسی رشته مهندسی کامپیوتر (ترم هفتم) در دانشگاه صنعتی کرمانشاه
+					دانشجوی کارشناسی رشته مهندسی کامپیوتر (ترم هشتم) در دانشگاه صنعتی کرمانشاه
 				</div>
 
 				<div className={classes.acquaintance}>
