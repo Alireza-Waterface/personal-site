@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Website - Alireza Abchehre
 
-## Getting Started
+## Overview
+This is the personal website and portfolio of Alireza Abchehre, a frontend developer. The website showcases professional skills, projects, and provides various tools like URL shortening. Built with Next.js and React, it features a clean, responsive design with RTL (Right-to-Left) support for Persian language.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Main Features
+- **Professional Portfolio**: Showcase of skills, projects, and resume
+- **URL Shortener**: Create and manage shortened URLs
+- **Blog Platform**: Share articles and content
+- **Authentication System**: Secure user login and registration
+- **Email Verification**: User verification via email
+- **Responsive Design**: Mobile-friendly interface with RTL support
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Core Components
+- **Home Page**: Introduction and overview
+- **Resume Section**: Professional experience and qualifications
+- **Skills Showcase**: Visual representation of technical skills
+- **Projects Gallery**: Portfolio of completed projects
+- **Contact Form**: Direct communication channel
+- **Tools Section**: Utility tools for visitors
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
+- **Next.js 15**: React framework with server-side rendering
+- **React 19**: UI library
+- **CSS Modules**: Scoped styling for components
+- **Styled Components**: Dynamic styling capabilities
+- **React Icons**: Icon library
+- **React Hot Toast**: Notification system
+- **React Multi Date Picker**: Date selection component
 
-## Learn More
+### Backend
+- **Next.js API Routes**: Server-side functionality
+- **Lucia**: Authentication library
+- **SQLite (Better-SQLite3)**: Local database
+- **Supabase**: Database and storage
+- **Nodemailer**: Email service for verification
 
-To learn more about Next.js, take a look at the following resources:
+### DevOps
+- **ESLint**: Code quality and style checking
+- **Turbopack**: Fast development builds
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation and Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+- Node.js (latest LTS version recommended)
+- npm or yarn
 
-## Deploy on Vercel
+### Recommended Hosting
+- Vercel (optimized for Next.js)
+- Netlify
+- Any Node.js compatible hosting service
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contribution
+This is a personal website, but if you'd like to suggest improvements:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+Alireza Abchehre - [Website](https://waterface.ir)
+
+---
+
+Made with ❤️ using Next.js and React.
