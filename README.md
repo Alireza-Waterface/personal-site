@@ -24,12 +24,10 @@ This is the personal website and portfolio of Alireza Abchehre, a frontend devel
 ## Tech Stack
 
 ### Frontend
-- **Next.js 15**: React framework with server-side rendering
+- **NextJS 15**: React framework with server-side rendering
 - **React 19**: UI library
 - **CSS Modules**: Scoped styling for components
-- **Styled Components**: Dynamic styling capabilities
 - **React Icons**: Icon library
-- **React Hot Toast**: Notification system
 - **React Multi Date Picker**: Date selection component
 
 ### Backend
