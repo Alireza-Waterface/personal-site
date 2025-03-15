@@ -3,12 +3,14 @@ import Form from "./form";
 import classes from './auth.module.css';
 
 export const metadata = {
-	title: 'علیرضا آبچهره | ورود به حساب کاربری',
-	description: 'برای استفاده از تمام امکانات سایت به حساب کاربری خود وارد شوید'
+	title: 'علیرضا آبچهره | ورود یا ایجاد حساب کاربری',
+	description: 'برای استفاده از تمام امکانات سایت به حساب کاربری خود وارد شوید',
+	author: 'علیرضا آبچهره',
+	robots: 'index, follow',
 };
 
 export default async function AuthPage({ searchParams }) {
-	const { mode = '', redirectURL = '' } = await searchParams;
+	const { mode = 'signup', redirectURL = '' } = await searchParams;
 
 	return (
 		<main className={classes.auth}>

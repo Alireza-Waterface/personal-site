@@ -2,45 +2,73 @@
 
 import Link from "next/link";
 
-import { useActionState, useEffect, useState } from "react";
-
-import { auth } from '@/actions/auth';
+import { useState, useTransition } from "react";
 
 import classes from './auth.module.css';
 
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import { login, signUp } from "@/lib/apiUser";
+import { redirect } from "next/navigation";
 
 export default function Form({ mode = '', redirectURL = '' }) {
-	const [formState, formAction] = useActionState(auth.bind(null, mode, redirectURL), {});
+	const [form, setForm] = useState({
+		email: '',
+		password: '',
+		name: '',
+	})
 
-	const [show, setShow] = useState(false);
+	const [data, setData] = useState(null);
 
-	useEffect(() => {
-		if(formState?.result?.errors?.email) {
-			document.getElementById('email').focus();
-		} else if(formState?.result?.errors?.password) {
-			document.getElementById('password').focus();
-		}
-	}, [formState]);
+	const [showPassword, setShowPassword] = useState(false);
+
+	const handleChange = e => {
+		setForm({
+			...form,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const [isPending, startTransition] = useTransition();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		startTransition( async () => {
+			if(mode === 'login') {
+				const res = await login({ email: form.email, password: form.password });
+				if(res.success) {
+					redirect(redirectURL ? `/${redirectURL}` : '/');
+				}
+				setData(res);
+			} else if(mode === 'signup') {
+				const res = await signUp({ email: form.email, password: form.password, name: form.name });
+				if(res.success) {
+					redirect(redirectURL ? `/${redirectURL}` : '/');				
+				}
+				setData(res);
+			}
+		});
+	};
 
 	return (
-		<form action={formAction} className={classes.form}>
+		<>
+		<form onSubmit={handleSubmit} className={classes.form}>
 			{ mode !== 'login' &&
 				<div className={classes.formRow}>
-					<label htmlFor="name">نام کامل <span>*</span></label>
-					<input
-						type='text'
-						id="name"
-						name="name"
-						inputMode='text'
-						className={classes.input}
-						defaultValue={formState?.result?.prevData?.name}
-						required
-					/>
-					
-					{ formState?.result?.errors?.name && <span>{formState?.result?.errors?.name}</span> }
-				</div>
+				<label htmlFor="name">نام کامل <span>*</span></label>
+				<input
+					type='text'
+					id="name"
+					name="name"
+					inputMode='text'
+					className={classes.input}
+					value={form.name}
+					onChange={handleChange}
+				/>
+				
+				{ data?.errors?.name && <span>{data?.errors?.name}</span> }
+			</div>
 			}
 
 			<div className={classes.formRow}>
@@ -52,39 +80,58 @@ export default function Form({ mode = '', redirectURL = '' }) {
 					inputMode='email'
 					className={classes.input}
 					placeholder="someone@example.com"
-					required
-					defaultValue={formState?.result?.prevData?.email}
+					value={form.email}
+					onChange={handleChange}
 				/>
 				
-				{ formState?.result?.errors?.email && <span>{formState?.result?.errors?.email}</span> }
+				{ data?.errors?.email && <span>{data?.errors?.email}</span> }
 			</div>
 
 			<div className={classes.formRow}>
 				<label htmlFor="password">
 					رمز عبور
 					<span>*</span>
-					{ show ?
-						<FaRegEyeSlash className={classes.icon} title="مخفی‌کردن رمز عبور" size={25} onClick={() => setShow(prev => !prev)} />
+					{ showPassword ?
+						<FaRegEyeSlash className={classes.icon} title="مخفی‌کردن رمز عبور" size={25} onClick={() => setShowPassword(prev => !prev)} />
 						:
-						<FaRegEye className={classes.icon} title="نمایش رمز عبور" size={25} onClick={() => setShow(prev => !prev)} />
+						<FaRegEye className={classes.icon} title="نمایش رمز عبور" size={25} onClick={() => setShowPassword(prev => !prev)} />
 					}
 				</label>
 				<input
-					type={show ? 'text' : 'password'}
+					type={showPassword ? 'text' : 'password'}
 					id='password'
 					name='password'
 					className={classes.input}
-					required
-					defaultValue={formState?.result?.prevData?.password}
+					value={form.password}
+					onChange={handleChange}
 				/>
 				
-				{ formState?.result?.errors?.password && <span>{formState?.result?.errors?.password}</span> }
+				{ data?.errors?.password && <span>{data?.errors?.password}</span> }
 			</div>
 			
 			<button
 				type='submit'
 				className={classes.formBtn}
-			>{ mode === 'login' ? 'ورود به حساب' : 'ایجاد حساب کاربری' }</button>
+				disabled={isPending}
+			>
+				{ isPending && 'در حال احراز هویت...' }
+				{ !isPending && mode === 'login' && 'ورود به حساب' }
+				{ !isPending && mode === 'signup' && 'ایجاد حساب کاربری' }
+			</button>
+			
+			{
+				data?.error === 'Email not confirmed' ?
+				<div className={classes.error}>
+					<p>ایمیل شما تایید نشده است. لطفا ایمیل خود را چک‌ کنید.</p>
+				</div>
+				:
+				data?.error === 'Invalid login credentials' ?
+				<div className={classes.error}>
+					<p>ایمیل یا رمز عبور اشتباه است.</p>
+				</div>
+				:
+				null
+			}
 
 			<div>
 				{
@@ -94,6 +141,20 @@ export default function Form({ mode = '', redirectURL = '' }) {
 					<Link className={classes.link} href={`/auth?mode=login${redirectURL ? `&redirectURL=${redirectURL}` : ''}`}>حساب کاربری دارید؟ وارد شوید</Link>
 				}
 			</div>
+
+			{
+				mode === 'login' &&
+				<div>
+					<Link className={classes.link} href="/reset-password">بازیابی رمز عبور</Link>
+				</div>
+			}
 		</form>
+
+		{ data?.success && data?.op === 'signup' &&
+			<div className={classes.success}>
+				<p>ثبت‌نام با موفقیت انجام و ایمیل تایید برای شما ارسال شد. بعد از تایید حساب، می‌توانید به پنل خود وارد شوید</p>
+			</div>
+		}
+		</>
 	);
 }

@@ -1,10 +1,9 @@
-.auth {
+.reset {
 	padding: 1rem 3%;
 }
 
 .title {
 	text-align: center;
-	font-size: 2rem;
 }
 
 .form {
@@ -73,51 +72,6 @@
 	background-color: var(--color-tertiary);
 }
 
-.link {
-	text-align: center;
-	width: fit-content;
-	transition: all 0.2s;
-	position: relative;
-}
-
-.link:hover {
-	color: var(--color-primary);
-}
-.link::after {
-	content: '';
-	position: absolute;
-	height: 2px;
-	width: 0;
-	border-radius: 2px;
-	bottom: -2px;
-	right: 0;
-	background-color: var(--color-primary);
-}
-.link:hover::after {
-	width: 100%;
-}
-
 .success {
-	width: clamp(300px, 100%, 600px);
-	background-color: oklch(0.532 0.157 131.589);
-	margin: 0 auto;
-	padding: 1rem;
-	border-radius: 4px;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	align-items: center;
-}
-
-.success > .formBtn {
-	box-shadow: none;
-	background-color: var(--color-dark);
-}
-
-.success > .formBtn:hover {
-	outline: 2px solid #fff;
-}
-
-.error {
-	color: var(--color-primary);
+	color: oklch(0.648 0.2 131.684);
 }

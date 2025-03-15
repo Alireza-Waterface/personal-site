@@ -1,9 +1,6 @@
-import { verfityAuth } from '@/lib/auth';
-import Form from './url-form';
+
+// import Form from './url-form';
 import classes from './url.module.css';
-import { redirect } from 'next/navigation';
-import { getUserByID } from '@/lib/user';
-import Link from 'next/link';
 
 export const metadata = {
 	title: "علیرضا آبچهره | کوتاه‌کننده لینک",
@@ -17,7 +14,7 @@ export const metadata = {
       siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده فرانت‌اند',
       locale: 'fa_IR',
       type: 'website',
-      images: [ // configure for different image sizes
+      images: [
          {
             url: 'https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me//me.webp',
             width: 640,
@@ -29,13 +26,7 @@ export const metadata = {
 };
 
 export default async function UrlShortener() {
-	const result = await verfityAuth();
-
-   if(!result.user) {
-      redirect('/auth?mode=login&redirectURL=url-shortener');
-   }
-
-   const user = await getUserByID(result.user.id);
+	
 
 	return (
 		<main className={classes.shortener}>
@@ -46,14 +37,14 @@ export default async function UrlShortener() {
 				هردو مورد موقتا به صورت رایگان در دسترس هستند
 			</p>
 
-         { user.state === 'unverified' &&
+         {/* { user.state === 'unverified' &&
             <div className={classes.state}>
                <p>حساب کاربری شما تایید نشده است. برای استفاده از این ابزار لازم است ابتدا ایمیل حساب خود را تایید کنید</p>
                <Link title='تایید حساب کاربری' href={`/verify?redirectURL=url-shortener`}>تایید حساب</Link>
             </div>
-         }
+         } */}
 
-			<Form userState={user.state} user_id={result?.user?.id} />
+			{/* <Form /> */}
 		</main>
 	);
 }

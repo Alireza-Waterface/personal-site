@@ -1,145 +1,69 @@
 'use server';
 
-import { createAuthSession, destroySession } from "@/lib/auth";
-import { hashUserPassword, verifyPassword } from "@/lib/hash";
-import { createUser, getUserByEmail } from "@/lib/user";
-import { redirect } from "next/navigation";
+import { signUp, login, getUser, recoverPassword, updateUser, logout, deleteUser } from '@/lib/apiUser';
+import { redirect } from 'next/navigation';
 
-const isNumeric = (value = '') => /^\d+$/.test(value);
+const validateEmail = email => {
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
+}
 
-export async function signup(prevState, formData, redirectUrl) {
+export async function auth(mode, redirectURL, prevData, formData) {
 	const email = formData.get('email');
 	const password = formData.get('password');
 	const name = formData.get('name');
 
-	let result = {};
-
-	if(!name.trim()) {
-		result.success = false;
-		result.errors = {
-			name: 'لطفا نام خود را وارد کنید'
-		};
-		result.prevData = {
-			email,
-			password,
-			name
-		};
-	} else if(name.trim().length < 2) {
-		result.success = false;
-		result.errors = {
-			name: 'نام وارد شده معتبر نیست'
-		};
-		result.prevData = {
-			email,
-			password,
-			name
-		};
+	const data = {
+		email,
+		password,
+		name,
 	}
 
-	if(!email.includes('@')) {
-		result.success = false;
-		result.errors = {
-			email: 'ایمیل وارد شده معتبر نمی‌باشد'
-		};
-		result.prevData = {
-			email,
-			password,
-			name
-		};
-	}
-	if(password.trim().length < 8) {
-		result.success = false;
-		result.errors = {
-			password: 'کلمه عبور باید حداقل 8 کاراکتر باشد'
-		};
-		result.prevData = {
-			email,
-			password,
-			name
-		};
+	let errors = {};
+
+	if(!email) {
+		errors.email = 'ایمیل الزامی است';
+	} else if(!validateEmail(email)) {
+		errors.email = 'ایمیل معتبر نیست';
 	}
 
-	if(Object.keys(result).length > 0) {
+	if(!password) {
+		errors.password = 'رمز عبور الزامی است';
+	} else if(password.length < 6) {
+		errors.password = 'رمز عبور باید حداقل 6 کاراکتر باشد';
+	}
+
+	if(mode === 'signup' && !name) {
+		errors.name = 'نام الزامی است';
+	} else if(mode === 'signup' && name.length < 2) {
+		errors.name = 'نام باید حداقل 2 کاراکتر باشد';
+	}
+
+	if(Object.keys(errors).length > 0) {
 		return {
-			result,
-		};
-	}
-
-	const hashedPassword = hashUserPassword(password);
-	try {
-		const id = createUser(email, hashedPassword, name);
-		
-		await createAuthSession(id);
-
-		redirect(redirectUrl ? `/${redirectUrl}` : '/');
-	} catch (error) {
-		let result = {};
-		if(error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
-			result.success = false;
-			result.errors = {
-				email: 'حساب کاربری با این ایمیل وجود دارد'
-			};
-			result.prevData = {
-				email,
-				password,
-				name
-			};
-			return {
-				result,
-			};
-		}
-		throw error;
-	}
-}
-
-export async function login(prevState, formData, redirectUrl) {
-	const email = formData.get('email');
-	const password = formData.get('password');
-
-	const existingUser = getUserByEmail(email);
-
-	if(!existingUser) {
-		return {
-			result: {
-				success: false,
-				errors: {
-					email: 'حساب کاربری با اطلاعات وارد شده یافت نشد',
-				},
-				prevData: {
-					email,
-					password,
-				}
-			}
+			success: false,
+			prevData: data,
+			errors,
 		}
 	}
 
-	const isValidPassword = verifyPassword(existingUser.password, password);
+	if(mode === 'signup') {
+		const user = await signUp({ email, password, name });
 
-	if(!isValidPassword) {
 		return {
-			result: {
-				success: false,
-				errors: {
-					password: 'ایمیل یا کلمه عبور اشتباه است',
-				},
-				prevData: {
-					email,
-					password,
-				}
-			}
+			success: true,
+			user,
+			message: 'حساب کاربری شما با موفقیت ایجاد و ایمیل تایید برای شما ارسال شد. پس از تایید حساب کاربری خود میتوانید به سایت وارد شوید',
 		}
+	} else if(mode === 'login') {
+		const {success, user, error} = await login({ email, password });
+
+		console.log(success, user, error);
+
+		// if(redirectURL) {
+		// 	redirect(`/${redirectURL}`);
+		// } else {
+		// 	redirect(`/`);
+		// }
 	}
-
-	await createAuthSession(existingUser.id);
-	redirect(redirectUrl ? `/${redirectUrl}` : '/');
-}
-
-export async function auth(mode, redirectURL, prevState, formData) {
-	if(mode === 'login')	return login(prevState, formData, redirectURL);
-	return signup(prevState, formData, redirectURL);
-}
-
-export async function logout() {
-	await destroySession();
-	redirect('/');
 }
