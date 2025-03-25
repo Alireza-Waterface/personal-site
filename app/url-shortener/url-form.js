@@ -1,7 +1,6 @@
 'use client';
 
-import { save } from "@/actions/links";
-import { useActionState, useState } from "react";
+import { useState } from "react";
 
 import DatePicker from "react-multi-date-picker";
 import persian from 'react-date-object/calendars/persian';
@@ -14,17 +13,26 @@ import { IoCopyOutline } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";
 
 export default function Form({ user_id = '', userState }) {
+	const [form, setForm] = useState({
+		url: '',
+		title: '',
+		category: '',
+		expire: new Date(),
+	});
+
+	function handleChange(e) {
+		setForm({ ...form, [e.target.name]: e.target.value });
+	}
+
 	const [expireDate, setExpireDate] = useState(new Date());
 	const today = new DateObject({ calendar: persian });
 
 	const [copy, setCopy] = useState(false);
 
-	const [state, formAction] = useActionState(save.bind(null, user_id, expireDate), { message: null });
-
 	function handleDateChange(date) {
 		if(date) {
 			const gregorianDate = new DateObject(date).convert('gregorian').toDate();
-			setExpireDate(gregorianDate);
+			setForm({ ...form, expire: gregorianDate });
 		}
 	}
 
@@ -55,9 +63,15 @@ export default function Form({ user_id = '', userState }) {
 		return () => clearTimeout(x);
 	}
 
+	function handleSubmit(e) {
+		e.preventDefault();
+
+		
+	}
+
 	return (
 		<>
-		<form action={formAction} className={classes.form}>
+		<form onSubmit={handleSubmit} className={classes.form}>
 			<div className={classes.formRow}>
 				<label htmlFor="url">لینک</label>
 				<input
@@ -67,9 +81,10 @@ export default function Form({ user_id = '', userState }) {
 					name="url"
 					className={classes.input}
 					placeholder="https://www.google.com"
-					defaultValue={state?.prevData?.url}
+					value={form.url}
+					onChange={handleChange}
 				/>
-				{ state?.urlMessage && <span className={classes.error}>{state.urlMessage}</span> }
+				{/* { state?.urlMessage && <span className={classes.error}>{state.urlMessage}</span> } */}
 			</div>
 
 			<div className={classes.formRow}>
@@ -80,9 +95,10 @@ export default function Form({ user_id = '', userState }) {
 					id="title"
 					name="title"
 					className={classes.input}
-					defaultValue={state?.prevData?.title}
+					value={form.title}
+					onChange={handleChange}
 				/>
-				{ state?.titleMessage && <span className={classes.error}>{state.titleMessage}</span> }
+				{/* { state?.titleMessage && <span className={classes.error}>{state.titleMessage}</span> } */}
 			</div>
 
 			<div className={classes.formRow}>
@@ -91,7 +107,8 @@ export default function Form({ user_id = '', userState }) {
 					id="category"
 					name="category"
 					className={classes.select}
-					defaultValue={state?.prevData?.category}
+					value={form.category}
+					onChange={handleChange}
 				>
 					<option value='free'>رایگان - 6 کاراکتر</option>
 					<option value='paid'>اختصاصی - 4 کاراکتر</option>
@@ -101,7 +118,7 @@ export default function Form({ user_id = '', userState }) {
 			<div className={classes.formRow}>
 				<label htmlFor="expire">تاریخ انقضا</label>
 				<DatePicker
-					value={expireDate}
+					value={form.expire}
 					required
 					title="تاریخ انقضای لینک"
 					format="YYYY/MM/DD"
@@ -130,12 +147,12 @@ export default function Form({ user_id = '', userState }) {
 				disabled={userState === 'unverified'}
 			>دریافت لینک کوتاه</button>
 
-			{ state?.successMessage && <span className={classes.error}>{state.successMessage}</span> }
+			{/* { state?.successMessage && <span className={classes.error}>{state.successMessage}</span> } */}
 		</form>
 
-		{ state?.link &&
+		{/* { state?.link &&
 			<div className={classes.linkBox}>
-				{`https://waterface.ir/${state.link}`}
+				{`https://waterface.ir/`}
 				<button
 					onClick={() => handleCopy(state.link)}
 					className={classes.copyBtn}
@@ -147,7 +164,7 @@ export default function Form({ user_id = '', userState }) {
 					}
 				</button>
 			</div>
-		}
+		} */}
 		</>
 	);
 }

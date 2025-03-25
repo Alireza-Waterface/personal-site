@@ -5,6 +5,7 @@ import { useState, useTransition } from 'react';
 import classes from './update.module.css';
 import { updateUser } from '@/lib/apiUser';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
+import { redirect } from 'next/navigation';
 
 export default function Form() {
 	const [form, setForm] = useState({
@@ -102,6 +103,7 @@ export default function Form() {
 			</button>
 
 			{ !success && error === 'AuthSessionMissingError' && <p className={classes.error}>خطا! نشست فعال یافت نشد</p> }
+			{ !success && error === 'AuthApiError' && <p className={classes.error}>خطا! رمز عبور جدید باید متفاوت از رمز عبور قبلی باشد</p> }
 			{ success && !error && <p className={classes.success}>رمز عبور با موفقیت به روز شد</p> }
 		</form>
 	);

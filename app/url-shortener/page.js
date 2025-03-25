@@ -1,5 +1,5 @@
-
-// import Form from './url-form';
+import Form from './url-form';
+import { getUser } from '@/lib/apiUser';
 import classes from './url.module.css';
 
 export const metadata = {
@@ -26,7 +26,9 @@ export const metadata = {
 };
 
 export default async function UrlShortener() {
-	
+	const user = await getUser();
+
+   console.log(user)
 
 	return (
 		<main className={classes.shortener}>
@@ -37,14 +39,13 @@ export default async function UrlShortener() {
 				هردو مورد موقتا به صورت رایگان در دسترس هستند
 			</p>
 
-         {/* { user.state === 'unverified' &&
+         { user.error === 'AuthSessionMissingError' &&
             <div className={classes.state}>
                <p>حساب کاربری شما تایید نشده است. برای استفاده از این ابزار لازم است ابتدا ایمیل حساب خود را تایید کنید</p>
-               <Link title='تایید حساب کاربری' href={`/verify?redirectURL=url-shortener`}>تایید حساب</Link>
             </div>
-         } */}
+         }
 
-			{/* <Form /> */}
+			<Form userState={user.error === 'AuthSessionMissingError' ? 'unverified' : 'verified'} />
 		</main>
 	);
 }

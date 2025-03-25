@@ -1,12 +1,14 @@
 'use client';
 
-import { useActionState, useEffect, useState } from 'react';
+import { useTransition, useActionState, useEffect, useState } from 'react';
 
 import classes from './contactForm.module.css';
 
 export default function ContactForm({ action }) {
 	const [state, formAction] = useActionState(action, {});
 	const [formData, setFormData] = useState(state || {});
+
+	const [isPending, startTransition] = useTransition();
 
 	useEffect(() => {
 		setFormData(state || {});
@@ -26,8 +28,14 @@ export default function ContactForm({ action }) {
 	
 	const reset = () => setFormData({});
 
+	function handleSubmit(formData) {
+		startTransition(() => {
+			formAction(formData);
+		})
+	}
+
 	return (
-		<form className={classes.form} action={formAction}>
+		<form className={classes.form} action={handleSubmit}>
 			<div className={classes.formRow}>
 				<label htmlFor='name' className={classes.formLabel}>نام کامل <span>*</span></label>
 				<input
@@ -85,11 +93,13 @@ export default function ContactForm({ action }) {
 					className={classes.formBtn}
 					data-styledanger
 					onClick={reset}
+					disabled={isPending}
 				>لغو</button>
 				<button
 					type='submit'
 					className={classes.formBtn}
-				>ثبت درخواست</button>
+					disabled={isPending}
+				>{ isPending ? 'در حال ارسال...' : 'ثبت درخواست' }</button>
 			</div>
 
 			{ state.success &&
