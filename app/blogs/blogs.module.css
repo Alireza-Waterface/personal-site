@@ -1,7 +1,11 @@
 .blogs {
-
+	padding: 1rem 3%;
 }
 
 .title {
+	text-align: center;
+}
+
+.empty {
 	text-align: center;
 }

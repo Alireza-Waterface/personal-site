@@ -1,3 +1,4 @@
+import { getBlogs } from '@/lib/apiBlogs';
 import classes from './blogs.module.css';
 
 export const metadata = {
@@ -24,12 +25,16 @@ export const metadata = {
 	},
 };
 
-export default function Blogs() {
+export default async function Blogs() {
+	const blogs = await getBlogs();
+
+	console.log(blogs)
+
 	return (
 		<main className={classes.blogs}>
 			<h1 className={classes.title}>وبلاگ</h1>
 
-			<p>به زودی وبلاگ ها را برای شما آماده خواهد شد</p>
+			{ !blogs.length && <p className={classes.empty}>پستی جهت نمایش وجود ندارد</p>}
 		</main>
 	)
 }
