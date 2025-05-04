@@ -35,9 +35,6 @@ export default function Navbar() {
 				<li className='link'>
 					<Link href="/#contact">ارتباط با من</Link>
 				</li>
-				<li className='link'>
-					<Link href="/tools">ابزار ها</Link>
-				</li>
 			</ul>
 
 			<MenuButton className='menuButton' />
