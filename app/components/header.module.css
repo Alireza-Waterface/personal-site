@@ -84,8 +84,9 @@
 .imageContainer img {
 	object-fit: contain;
 	width: 100%;
-	transform: scale(0.9) translateY(-35%);
+	transform: scale(0.9) translateY(-12%);
 	height: 100%;
+	border-radius: 16px;
 }
 
 .introduce {
