@@ -33,7 +33,7 @@ const gridItems = [
 	},
 	{
 		id: 4,
-		title: "علاقه‌مند به تکنولوژی و به‌دنبال کدنویسی",
+		title: "علاقه‌مند به تکنولوژی و مشتاق کدنویسی",
 		description: "",
 		className: "lg:col-span-2 md:col-span-3 md:row-span-1",
 		imgClassName: "",
