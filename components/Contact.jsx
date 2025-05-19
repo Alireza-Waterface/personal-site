@@ -1,6 +1,6 @@
 import { createRequest } from '@/lib/apiRequests';
 import classes from './contact.module.css';
-import ContactForm from '../UI/ContactForm';
+import ContactForm from '@/app/UI/ContactForm';
 
 function validateForInjection(formData) {
 	const suspiciousWords = [

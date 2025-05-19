@@ -1,9 +1,8 @@
 import { getSkills } from '@/lib/apiSkills';
 import classes from './resume.module.css';
-import TabSelector from '../UI/TabSelector';
+import TabSelector from '@/app/UI/TabSelector';
 
-import { SiCssmodules, SiReacthookform, SiReactquery, SiReactrouter, SiRedux, SiStyledcomponents } from 'react-icons/si';
-import { FaToolbox } from 'react-icons/fa';
+import { MovingCards } from './ui/movingCards';
 
 export default async function Resume() {
 	const skills = await getSkills();
@@ -69,40 +68,9 @@ export default async function Resume() {
 						</div>
 					))
 				}
-
-				<ul className={classes.list}>
-					<legend>دیگر مهارت‌ها و ابزارها</legend>
-
-					<li>
-						Styled-Components
-						<SiStyledcomponents size={40} className={classes.icon} />
-					</li>
-					<li>
-						React-Query
-						<SiReactquery size={40} className={classes.icon} />
-					</li>
-					<li>
-						CSS modules
-						<SiCssmodules size={40} className={classes.icon} />
-					</li>
-					<li>
-						React-Hook-Form
-						<SiReacthookform size={40} className={classes.icon} />
-					</li>
-					<li>
-						React-Router-Dom
-						<SiReactrouter size={40} className={classes.icon} />
-					</li>
-					<li>
-						Redux
-						<SiRedux size={40} className={classes.icon} />
-					</li>
-					<li>
-						و دیگر ابزار های پرکاربرد دیگر
-						<FaToolbox size={35} className={classes.icon} />
-					</li>
-				</ul>
+				<MovingCards />
 			</div>
+
 
 			<a
 				href='https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me//Resume.pdf'

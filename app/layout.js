@@ -1,5 +1,5 @@
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import ScrollToTop from "./UI/ScrollToTop";
 
@@ -37,7 +37,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang="fa-IR" dir="rtl">
+      <html lang="fa-IR" dir="rtl" suppressHydrationWarning>
          <body>
             <Navbar />
             {children}

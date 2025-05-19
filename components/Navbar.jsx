@@ -2,7 +2,7 @@ import logo from '@/app/icon.png';
 
 import './navbar.css';
 
-import MenuButton from "../UI/MenuButton";
+import MenuButton from "@/app/UI/MenuButton";
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -34,9 +34,6 @@ export default function Navbar() {
 				</li>
 				<li className='link'>
 					<Link href="/#contact">ارتباط با من</Link>
-				</li>
-				<li className='link'>
-					<Link href="/tools">ابزار ها</Link>
 				</li>
 			</ul>
 
