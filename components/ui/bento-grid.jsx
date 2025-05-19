@@ -65,6 +65,7 @@ export const BentoGridItem = ({
         background: "rgb(4,7,29)",
         backgroundColor:
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+        color: 'var(--color-text-invert)'
       }}
     >
       <div className={`${id === 6 && "flex justify-center"} h-full`}>

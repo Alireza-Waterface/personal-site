@@ -14,11 +14,7 @@ export function ExpandableCardDemo({ data }) {
 			if (event.key === "Escape") {
 				setActive(false);
 			}
-		}
-
-		// if (active && typeof active === "object") document.body.style.overflow = "hidden";
-		// else document.body.style.overflow = "hidden";
-		
+		}		
 
 		window.addEventListener("keydown", onKeyDown);
 		return () => window.removeEventListener("keydown", onKeyDown);
@@ -62,7 +58,7 @@ export function ExpandableCardDemo({ data }) {
 					<motion.div
 						layoutId={`card-${active.title}-${id}`}
 						ref={ref}
-						className="w-full max-w-[60vw] md:h-fit md:max-h-[95%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-auto"
+						className="w-full lg:max-w-[60vw] md:max-w-[75vw] max-w-[90vw] md:h-fit md:max-h-[95%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-auto"
 					>
 						<motion.div layoutId={`image-${active.title}-${id}`}>
 							<img
@@ -70,12 +66,13 @@ export function ExpandableCardDemo({ data }) {
 								height={200}
 								src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${active.id}-1.webp`}
 								alt={active.title}
-								className="w-full h-full lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-contain object-top" />
+								className="w-full h-full lg:h-80 object-contain object-top"
+								/>
 						</motion.div>
 
 						<div>
 							<div className="p-4 flex flex-col gap-4">
-								<div className="">
+								<div>
 									<motion.h3
 										layoutId={`title-${active.title}-${id}`}
 										className="font-normal text-2xl text-neutral-700 dark:text-neutral-200">
