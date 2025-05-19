@@ -8,8 +8,8 @@ import Link from "next/link";
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
-	const { id } = await params;
-	const [projectData] = await getProject(id);
+	const { slug } = await params;
+	const [projectData] = await getProject(slug);
 
 	return {
 		title: `علیرضا آبچهره | پروژه ${projectData?.title}`,
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
 		openGraph: {
 			title: `علیرضا آبچهره | پروژه ${projectData?.title}`,
 			description: `علیرضا آبچهره | پروژه ${projectData?.metaDesc}`,
-			url: `https://waterface.ir/projects/${id}`,
+			url: `https://waterface.ir/projects/${slug}`,
 			siteName: 'وب‌سایت شخصی علیرضا آبچهره | توسعه‌دهنده فرانت‌اند',
 			locale: 'fa_IR',
 			type: 'website',
@@ -37,8 +37,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProjectPage({ params }) {
-	const { id } = await params;
-	const [projectData] = await getProject(id);
+	const { slug } = await params;
+	const [projectData] = await getProject(slug);
 
 	if(!projectData) notFound();
 

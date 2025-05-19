@@ -90,7 +90,7 @@ export function ExpandableCardDemo({ data }) {
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
 									exit={{ opacity: 0 }}
-									href={`/projects/${active.id}`}
+									href={`/projects/${active.slug}`}
 									className="text-xl font-bold w-fit"
 									style={{
 										color: 'var(--color-primary)'
