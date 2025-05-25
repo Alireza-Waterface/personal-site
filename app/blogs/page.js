@@ -28,8 +28,6 @@ export const metadata = {
 export default async function Blogs() {
 	const blogs = await getBlogs();
 
-	console.log(blogs)
-
 	return (
 		<main className={classes.blogs}>
 			<h1 className={classes.title}>وبلاگ</h1>
