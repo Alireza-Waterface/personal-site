@@ -1,5 +1,4 @@
 import { getBlogs } from '@/lib/apiBlogs';
-import classes from './blogs.module.css';
 
 export const metadata = {
 	title: 'علیرضا آبچهره | وبلاگ',
@@ -29,10 +28,10 @@ export default async function Blogs() {
 	const blogs = await getBlogs();
 
 	return (
-		<main className={classes.blogs}>
-			<h1 className={classes.title}>وبلاگ</h1>
+		<main>
+			<h1 className='text-center text-3xl py-4'>وبلاگ</h1>
 
-			{ !blogs.length && <p className={classes.empty}>پستی جهت نمایش وجود ندارد</p>}
+			{ !blogs.length && <p className='text-center text-2xl'>پستی جهت نمایش وجود ندارد</p>}
 		</main>
 	)
 }

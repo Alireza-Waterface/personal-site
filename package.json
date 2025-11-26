@@ -17,7 +17,6 @@
       "@tailwindcss/postcss": "^4.1.7",
       "clsx": "^2.1.1",
       "lottie-react": "^2.4.1",
-      "lucia": "^3.2.2",
       "motion": "^12.12.1",
       "next": "15.3.2",
       "postcss": "^8.5.3",
