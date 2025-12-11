@@ -2,7 +2,6 @@
 
 import { Boxes } from "../components/ui/background-boxes";
 
-import { motion } from "motion/react";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 
 import classes from "./header.module.css";
@@ -19,22 +18,10 @@ import { IoLogoJavascript } from "react-icons/io5";
 export default function Header() {
    return (
       <div className="min-h-[80vh] relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
-         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 mask-[radial-gradient(transparent,white)] pointer-events-none" />
          <Boxes />
 
-         <motion.div
-            initial={{ opacity: 0.0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-               delay: 0.3,
-               duration: 0.8,
-               ease: "easeInOut",
-            }}
-            viewport={{
-               once: true,
-            }}
-            className="relative flex flex-col gap-4 items-center justify-center px-4"
-         >
+         <div className="relative flex flex-col gap-4 items-center justify-center px-4">
             <header id="header" className={classes.header}>
                <div className={classes.introduce}>
                   <p className={`${classes.welcome} z-30`}>
@@ -145,7 +132,7 @@ export default function Header() {
                </div>
 
                <CardContainer className="inter-var">
-                  <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                  <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10 dark:bg-black dark:border-white/20 border-black/10 w-auto sm:w-120 h-auto rounded-xl p-6 border">
                      <CardItem translateZ="100" className="w-full">
                         <img
                            src="https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/me/me.webp"
@@ -158,7 +145,7 @@ export default function Header() {
                   </CardBody>
                </CardContainer>
             </header>
-         </motion.div>
+         </div>
       </div>
    );
 }

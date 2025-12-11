@@ -1,0 +1,102 @@
+/* Container */
+.container {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   width: 100%;
+   max-width: 1000px; /* Limits width on very large screens */
+   margin: 0 auto;
+}
+
+/* --- Main Stage --- */
+.mainStage {
+   width: 100%;
+   background-color: #f3f4f6; /* Light gray background for contrast */
+   border-radius: 12px;
+   overflow: hidden;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.imageWrapper {
+   position: relative;
+   width: 100%;
+   /* Aspect Ratio Hack: This determines the height of the main viewer.
+     56.25% = 16:9 ratio. Increase this % if you want a taller square box. */
+   padding-top: 60%;
+}
+
+.mainImage {
+   object-fit: contain; /* Shows full image without cropping */
+   transition: opacity 0.3s ease-in-out;
+}
+
+/* --- Thumbnail Strip --- */
+.thumbnailStrip {
+   display: flex;
+   gap: 12px;
+   overflow-x: auto; /* Enables horizontal scrolling */
+   padding: 4px;
+
+   /* Smooth scrolling physics */
+   scroll-behavior: smooth;
+   -webkit-overflow-scrolling: touch;
+
+   /* Scroll Snap: Makes thumbnails align nicely when scrolling fast */
+   scroll-snap-type: x mandatory;
+}
+
+/* Hide Scrollbar for Chrome, Safari and Opera */
+.thumbnailStrip::-webkit-scrollbar {
+   display: none;
+}
+/* Hide Scrollbar for IE, Edge and Firefox */
+.thumbnailStrip {
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; /* Firefox */
+}
+
+/* --- Thumbnail Buttons --- */
+.thumbBtn {
+   flex: 0 0 auto; /* Prevents shrinking */
+   width: 100px;
+   height: 70px;
+   border: 2px solid transparent;
+   border-radius: 8px;
+   overflow: hidden;
+   cursor: pointer;
+   padding: 0;
+   background: transparent;
+   transition: all 0.2s ease;
+   scroll-snap-align: start; /* Snap alignment */
+   opacity: 0.6;
+}
+
+.thumbBtn:hover {
+   opacity: 1;
+   transform: translateY(-2px);
+}
+
+/* Active State */
+.thumbBtn.active {
+   border-color: #3b82f6; /* Your primary brand color here */
+   opacity: 1;
+   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.thumbImg {
+   width: 100%;
+   height: 100%;
+   object-fit: cover; /* Thumbnails always fill the box nicely */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+   .imageWrapper {
+      padding-top: 75%; /* Taller (4:3) aspect ratio on mobile looks better */
+   }
+
+   .thumbBtn {
+      width: 80px;
+      height: 60px;
+   }
+}

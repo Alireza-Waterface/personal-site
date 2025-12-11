@@ -10,16 +10,16 @@ export default async function Resume() {
    if (!skills) return <div>مهارتی یافت نشد</div>;
 
    function level(value) {
-      if (value < 40) {
-         return "کمتر از متوسط";
-      } else if (value >= 40 && value < 60) {
+      if (value < 35) {
+         return "مقدماتی";
+      } else if (value >= 35 && value < 50) {
          return "متوسط";
-      } else if (value >= 60 && value < 75) {
-         return "بالاتر از متوسط";
-      } else if (value >= 75 && value < 90) {
-         return "خوب";
+      } else if (value >= 50 && value < 70) {
+         return "تسلط مناسب";
+      } else if (value >= 70 && value < 90) {
+         return "تسلط بالا";
       } else if (value >= 90) {
-         return "خیلی خوب";
+         return "پیشرفته";
       } else {
          return "نا مشخص";
       }
@@ -63,8 +63,8 @@ export default async function Resume() {
                <p className={classes.title}>دوره کارشناسی</p>
                <p className={classes.desc}>
                   دوره کارشناسی پیوسته خود را در رشته مهندسی کامپیوتر در دانشگاه
-                  صنعتی کرمانشاه از مهر ماه سال 1400 آغاز کرده و تا تیر ماه سال
-                  1404 به پایان خواهم رساند
+                  صنعتی کرمانشاه از مهر ماه سال 1400 آغاز کرده و در سال 1404 به
+                  پایان رساندم.
                </p>
                <span className={classes.circle}></span>
                <span className={classes.line}></span>

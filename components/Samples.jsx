@@ -1,24 +1,28 @@
 import { getProjects } from "@/lib/apiProjects";
 
-import Heading from "@/app/UI/Heading";
-
-import classes from './samples.module.css';
 import Link from "next/link";
-import { ExpandableCardDemo } from "./ProjectCards";
+import Heading from "@/app/UI/Heading";
+import ProjectCards from "./ProjectCards";
+
+import classes from "./samples.module.css";
 
 export default async function Samples() {
-	const data = await getProjects();
-	
-	if(!data) return <div>پروژه‌ای یافت نشد</div>;
+   const data = await getProjects();
 
-	return (
-		<section id="samples" className={classes.samples}>
-			<p className={classes.intro}>برخی از نمونه‌کار های انجام شده</p>
-			<Heading type="h2" size={2} className={classes.title}>نمونه‌کار ها</Heading>
+   if (!data) return <p>پروژه‌ای یافت نشد</p>;
 
-			<ExpandableCardDemo data={data} />
+   return (
+      <section id="samples" className={classes.samples}>
+         <p className={classes.intro}>برخی از نمونه‌کار های انجام شده</p>
+         <Heading type="h2" size={2} className={classes.title}>
+            نمونه‌کار ها
+         </Heading>
 
-			<Link href={'/projects'} className={classes.link}>مشاهده همه</Link>
-		</section>
-	);
+         <ProjectCards data={data} />
+
+         <Link href={"/projects"} className={classes.link}>
+            مشاهده همه
+         </Link>
+      </section>
+   );
 }

@@ -1,15 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import dynamic from "next/dynamic";
-
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
 import { cn } from "../../lib/utils";
 
 import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
-import animationData from "../../data/confetti.json";
 
 export const BentoGrid = ({ className, children }) => {
    return (
@@ -37,12 +31,10 @@ export const BentoGridItem = ({
    const leftLists = ["ReactJS", "JavaScript", "NextJS"];
    const rightLists = ["Database", "Network", "Related tools"];
 
-   const lottieRef = useRef(null);
-
    return (
       <div
          className={cn(
-            "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+            "row-span-1 relative overflow-hidden rounded-3xl border border-white/10 group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
             className
          )}
          style={{
@@ -124,30 +116,12 @@ export const BentoGridItem = ({
                )}
                {id === 6 && (
                   <div className="mt-5 relative flex flex-col gap-4">
-                     <div className={`absolute -bottom-5 right-0 block`}>
-                        <Lottie
-                           lottieRef={lottieRef}
-                           animationData={animationData}
-                           loop={false}
-                           autoplay={false}
-                           style={{ height: 200, width: 400 }}
-                        />
-                     </div>
-
                      <a
                         href="tel:+989155706085"
                         className="bg-[#161A31] rounded-md py-2 cursor-pointer z-10 active:translate-y-0.5"
                      >
                         تماس تلفنی
                      </a>
-
-                     {/* <MagicButton
-                        title={copied ? "شماره تماس کپی شد" : "کپی شماره تماس"}
-                        icon={<IoCopyOutline />}
-                        position="left"
-                        handleClick={handleCopy}
-                        otherClasses="!bg-[#161A31]"
-                     /> */}
                   </div>
                )}
             </div>
