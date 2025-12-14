@@ -1,4 +1,3 @@
-import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import GridGlobe from "./ui/GridGlobe";
 
 const gridItems = [

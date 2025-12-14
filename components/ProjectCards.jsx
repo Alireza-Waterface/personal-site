@@ -16,7 +16,7 @@ export default function ProjectCards({ data }) {
                      <img
                         width={100}
                         height={100}
-                        src={`https://wjbwobxiekyzfcjxjnkt.supabase.co/storage/v1/object/public/projects/p${card.id}-1.webp`}
+                        src={card.cover_image}
                         alt={card.title || "تصویر پروژه"}
                         loading="lazy"
                         fetchPriority="low"

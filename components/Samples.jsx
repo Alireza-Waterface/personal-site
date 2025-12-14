@@ -6,6 +6,8 @@ import ProjectCards from "./ProjectCards";
 
 import classes from "./samples.module.css";
 
+export const dynamic = "auto";
+
 export default async function Samples() {
    const data = await getProjects();
 

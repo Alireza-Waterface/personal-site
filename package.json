@@ -9,14 +9,12 @@
       "lint": "next lint"
    },
    "dependencies": {
-      "@lucia-auth/adapter-sqlite": "^3.0.2",
       "@react-three/drei": "^10.7.7",
       "@react-three/fiber": "^9.4.2",
       "@supabase/supabase-js": "^2.87.1",
       "@tabler/icons-react": "^3.35.0",
       "@tailwindcss/postcss": "^4.1.18",
       "clsx": "^2.1.1",
-      "lottie-react": "^2.4.1",
       "motion": "^12.23.26",
       "next": "15.5.7",
       "postcss": "^8.5.6",
